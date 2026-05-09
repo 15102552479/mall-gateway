@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+    <div >
+        <table border="1">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>userId</th>
+            <th>commodityCode</th>
+			<th>count</th>
+			<th>amount</th>
+			
+        </tr>
+        </thead>
+        <tbody id="orderlist">
+
+        </tbody>
+
+    </table>
+    </div>
+    <input type="button" value="订单列表" onclick="getData()">
+    <script>
+        function getData() {
+            $.get('http://localhost:8888/order/findOrderByUserId/1',function(data){
+                console.log(data.orders)
+                var list = data.orders;
+                var str = '';
+                for(var i=0;i<list.length;i++){
+                    str +='<tr><th>'+list[i].id+'</th><th>'+list[i].userId+'</th><th>'+list[i].commodityCode+'</th><th>'+list[i].count+'</th><th>'+list[i].amount+'</th></tr>';
+                }
+                $('#orderlist').html(str);
+            });
+        }
+    </script>
+</body>
+</html>
