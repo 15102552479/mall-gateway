@@ -48,6 +48,14 @@ spring:
           predicates:
             - Path=/user/**   # 断言，路径相匹配的进行路由
 
+      #白名单配置：匹配的路径跳过Token认证
+      whitelist:
+        enabled: true
+        paths:
+          - "^/user/login$"
+          - "^/user/register$"
+          - "^/actuator(/.*)?$"
+
       #跨越配置
       globalcors:
         cors-configurations:

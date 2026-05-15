@@ -23,11 +23,15 @@ import java.util.List;
  *  GlobalFilter通过实现Ordered接口，来指定order值
  *
  */
-//@Component
+@Component
 @Slf4j
 public class CheckAuthFilter implements GlobalFilter, Ordered {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+        //白名单命中则跳过认证
+        if (Boolean.TRUE.equals(exchange.getAttribute("whitelist.hit"))) {
+            return chain.filter(exchange);
+        }
         //获取token
         String token = exchange.getRequest().getHeaders().getFirst("token");
         if (null == token) {
