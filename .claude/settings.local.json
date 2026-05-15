@@ -6,7 +6,14 @@
       "Bash(openspec instructions *)",
       "PowerShell(New-Item *)",
       "Bash(git add *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(cd D:projectIdea21mall-gateway *)",
+      "PowerShell(.\\\\mvnw clean compile --batch-mode)",
+      "PowerShell(mvn *)",
+      "PowerShell(Get-ChildItem \"E:\\\\software\" -Directory | Where-Object { $_.Name -match \"jdk|java\" } | ForEach-Object { $_.Name })",
+      "PowerShell(mvn clean *)",
+      "PowerShell(mvn test *)",
+      "Bash(openspec list *)"
     ]
   }
 }
